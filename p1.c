@@ -20,7 +20,7 @@ void dfsPrint(Node *children, int depth, int MAXIMUM_CHILDREN);
 
 int binarySearch(Node *nodeList, int l, int r, int val);
 
-int search(Node *nodeList, int val);
+int search(Node *nodeList, int val,int MAXIMUM_PROCESSES);
 
 int main(void) {        
     int MAXIMUM_PROCESSES = 500;
@@ -78,7 +78,7 @@ int main(void) {
             continue;
         }
 
-        int indexOfParent = search(nodeList, nodeList[i].ppid);
+        int indexOfParent = search(nodeList, nodeList[i].ppid, MAXIMUM_PROCESSES);
         if(indexOfParent < 0) {
             continue;
         }
@@ -135,8 +135,8 @@ void dfsPrint(Node *children, int depth, int MAXIMUM_CHILDREN) {
         }
     }
 }
-int search(Node *nodeList, int val) {
-    for(int i = 0; i < 500; i++) {
+int search(Node *nodeList, int val, int MAXIMUM_PROCESSES) {
+    for(int i = 0; i < MAXIMUM_PROCESSES; i++) {
         if(nodeList[i].pid == val) {
             return i;
         }
